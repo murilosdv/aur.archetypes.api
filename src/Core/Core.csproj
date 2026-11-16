@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Aurore.Archetypes.Api.Core</AssemblyName>
+    <RootNamespace>Aurore.Archetypes.Api.Core</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aurore.Foundation.Core" Version="1.0.0-preview.1" />
+    <PackageReference Include="Aurore.Foundation.Telemetry" Version="1.0.0-preview.1" />
+    <PackageReference Include="Aurore.Foundation.EntityFrameworkCore.Postgres" Version="1.0.0-preview.1" />
+    <PackageReference Include="FluentValidation" Version="12.2.0" />
+  </ItemGroup>
+
+</Project>

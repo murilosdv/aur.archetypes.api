@@ -1,0 +1,15 @@
+meta {
+  name: Cursor: next page
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{host}}/v1/playground/pagination/people/stream?pageSize=10&orderBy=name:desc&cursor={{cursor}}
+  body: none
+  auth: none
+}
+
+docs {
+  The cursor of the previous request is used. A cursor with other filters returns 400 pagination.cursor_mismatch.
+}

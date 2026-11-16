@@ -1,0 +1,23 @@
+meta {
+  name: First key
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{host}}/v1/playground/idempotency/orders
+  body: none
+  auth: none
+}
+
+headers {
+  Idempotency-Key: test-key-0001
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Send twice: the same id both times.
+}

@@ -1,0 +1,19 @@
+meta {
+  name: Output cache
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{host}}/v1/playground/caching/timestamp
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Policy short, 10 seconds: the timestamp stays the same for 10 seconds.
+}

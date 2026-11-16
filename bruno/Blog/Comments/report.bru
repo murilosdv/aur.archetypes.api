@@ -1,0 +1,32 @@
+meta {
+  name: Alice reports the comment
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{host}}/v1/posts/{{commentsPostId}}/comments/{{commentId}}/report
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+  Idempotency-Key: report-{{$guid}}
+}
+
+auth:bearer {
+  token: {{alice}}
+}
+
+body:json {
+  { "reason": "Rude to other readers" }
+}
+
+assert {
+  res.status: eq 202
+}
+
+docs {
+  The moderators receive an email with the post, the comment, its author and the reason: read it in the Mailpit of the dev-sbx (http://127.0.0.1:8025). The report is kept even when the mail server is down.
+}

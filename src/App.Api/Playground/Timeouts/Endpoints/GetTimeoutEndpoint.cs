@@ -1,0 +1,27 @@
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Aurore.Foundation.AspNetCore.MinimalApis;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Timeouts;
+using Microsoft.AspNetCore.Routing;
+
+namespace Aurore.Archetypes.Api.App.Api.Playground.Timeouts.Endpoints;
+
+internal sealed class GetTimeoutEndpoint : MinimalEndpoint<TimeoutsResource>
+{
+    public override RouteHandlerBuilder Map(IEndpointRouteBuilder builder)
+    {
+        return builder
+            .MapGet("{seconds:int}", HandleAsync)
+            .WithMetadata(new RequestTimeoutAttribute(milliseconds: 2000));
+
+        static async Task<IResult> HandleAsync(int seconds, CancellationToken cancellationToken)
+        {
+            await Task.Delay(TimeSpan.FromSeconds(seconds), cancellationToken);
+
+            return TypedResults.Ok(new { WaitedSeconds = seconds });
+        }
+    }
+}

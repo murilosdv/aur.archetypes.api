@@ -1,0 +1,31 @@
+meta {
+  name: Create the profile of bob
+  type: http
+  seq: 1
+}
+
+put {
+  url: {{host}}/v1/authors/me
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{bob}}
+}
+
+body:json {
+  { "handle": "bob", "displayName": "Bob" }
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Each author creates the own profile first. The handle never changes: letters, digits, hyphens or underscores (bob, my-name, my_name, MyName). Calling it again with the same data changes nothing.
+}

@@ -1,0 +1,23 @@
+meta {
+  name: Comments as an infinite scroll
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{host}}/v1/posts/{{commentsPostId}}/comments?pageSize=2
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{alice}}
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Send the nextCursor of the answer back as ?cursor=.
+}

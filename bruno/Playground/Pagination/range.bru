@@ -1,0 +1,19 @@
+meta {
+  name: Created range and name
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{host}}/v1/playground/pagination/people?createdFrom=2026-02-10T00:00:00Z&createdTo=2026-02-13T00:00:00Z&name=person
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  From is inclusive, to is exclusive.
+}

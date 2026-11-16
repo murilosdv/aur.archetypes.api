@@ -1,0 +1,19 @@
+meta {
+  name: Bob sees the draft
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{host}}/v1/posts/{{slug}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{bob}}
+}
+
+assert {
+  res.status: eq 200
+}

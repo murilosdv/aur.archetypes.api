@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Aurore.Archetypes.Api.Infra</AssemblyName>
+    <RootNamespace>Aurore.Archetypes.Api.Infra</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aurore.Foundation.AspNetCore" Version="1.0.0-preview.1" />
+    <PackageReference Include="Aurore.Foundation.EntityFrameworkCore.Postgres" Version="1.0.0-preview.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+  </ItemGroup>
+
+</Project>

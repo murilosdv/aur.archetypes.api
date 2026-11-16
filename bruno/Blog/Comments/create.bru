@@ -1,0 +1,32 @@
+meta {
+  name: Alice comments
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{host}}/v1/posts/{{commentsPostId}}/comments
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+  Idempotency-Key: comment-{{$guid}}
+}
+
+auth:bearer {
+  token: {{alice}}
+}
+
+body:json {
+  { "body": "Nice first post." }
+}
+
+script:post-response {
+  bru.setVar("commentId", res.body.id);
+}
+
+assert {
+  res.status: eq 201
+}

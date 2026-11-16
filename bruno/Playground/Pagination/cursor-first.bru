@@ -1,0 +1,23 @@
+meta {
+  name: Cursor: first page
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{host}}/v1/playground/pagination/people/stream?pageSize=10&orderBy=name:desc
+  body: none
+  auth: none
+}
+
+script:post-response {
+  bru.setVar("cursor", res.body.nextCursor);
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Keeps nextCursor for the next request (same filters and ordering).
+}

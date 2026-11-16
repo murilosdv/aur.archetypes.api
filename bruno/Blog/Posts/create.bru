@@ -1,0 +1,38 @@
+meta {
+  name: Bob writes a draft
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{host}}/v1/posts
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+  Idempotency-Key: create-{{$guid}}
+}
+
+auth:bearer {
+  token: {{bob}}
+}
+
+body:json {
+  { "title": "Hello, world", "body": "The first post." }
+}
+
+script:post-response {
+  bru.setVar("postId", res.body.id);
+  bru.setVar("slug", res.body.slug);
+}
+
+assert {
+  res.status: eq 201
+  res.body.status: eq Draft
+}
+
+docs {
+  Only title and body are sent; the API builds the slug from the title and the id. The key is new on every send; to see the replay, type a fixed Idempotency-Key and send twice: the same answer comes back.
+}

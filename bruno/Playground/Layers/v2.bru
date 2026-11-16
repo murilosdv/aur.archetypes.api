@@ -1,0 +1,19 @@
+meta {
+  name: Version 2
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{host}}/v2/playground/layers/headers
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Same route, version 2.
+}

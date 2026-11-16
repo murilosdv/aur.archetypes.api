@@ -1,0 +1,19 @@
+meta {
+  name: API key only, with a bearer token
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{host}}/v1/playground/auth/api-key-only
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{alice}}
+}
+
+assert {
+  res.status: eq 401
+}

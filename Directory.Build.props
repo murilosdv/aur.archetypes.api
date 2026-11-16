@@ -1,0 +1,30 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net11.0</TargetFramework>
+
+    <!-- Language Settings -->
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+
+    <!-- Company Information -->
+    <Authors>Aurore Development</Authors>
+    <Company>AuroreLabs</Company>
+    <Copyright>AuroreLabs</Copyright>
+
+    <!-- The application is deployed, never packed. The documentation file also turns on the unused-using check (IDE0005) in the build. -->
+    <IsPackable>false</IsPackable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+
+  <!-- Auto-detect test projects by path pattern. Test results go to /artifacts/test-results instead of a TestResults folder in the root. -->
+  <PropertyGroup Condition="$(MSBuildProjectDirectory.Contains('\tests\')) Or $(MSBuildProjectDirectory.Contains('/tests/'))">
+    <IsTestProject>true</IsTestProject>
+    <TestingPlatformCommandLineArguments>--results-directory "$(MSBuildThisFileDirectory)artifacts/test-results"</TestingPlatformCommandLineArguments>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(IsTestProject)' == 'true'">
+    <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.12.0" />
+  </ItemGroup>
+</Project>

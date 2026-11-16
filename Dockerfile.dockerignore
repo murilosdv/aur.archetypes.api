@@ -1,0 +1,11 @@
+**/bin
+**/obj
+**/.vs
+**/.git
+**/.vscode
+**/artifacts
+**/TestResults
+**/*.user
+**/.tasklist
+**/node_modules
+.env

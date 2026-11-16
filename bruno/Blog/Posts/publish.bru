@@ -1,0 +1,24 @@
+meta {
+  name: Bob publishes
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{host}}/v1/posts/{{postId}}/publish
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{bob}}
+}
+
+assert {
+  res.status: eq 200
+  res.body.status: eq Published
+}
+
+docs {
+  Publishing a second time is a 409.
+}

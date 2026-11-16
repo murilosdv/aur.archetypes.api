@@ -1,0 +1,23 @@
+meta {
+  name: Scope api.read
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{host}}/v1/playground/auth/scope
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{bob}}
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  403 if the token lacks the scope.
+}

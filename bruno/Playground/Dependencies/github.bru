@@ -1,0 +1,19 @@
+meta {
+  name: Typed client (GitHub)
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{host}}/v1/playground/dependencies/github/octocat
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  200 with the user, 404 for an unknown one.
+}

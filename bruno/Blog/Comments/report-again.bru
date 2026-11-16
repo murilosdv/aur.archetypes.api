@@ -1,0 +1,33 @@
+meta {
+  name: Alice cannot report it twice
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{host}}/v1/posts/{{commentsPostId}}/comments/{{commentId}}/report
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+  Idempotency-Key: report-{{$guid}}
+}
+
+auth:bearer {
+  token: {{alice}}
+}
+
+body:json {
+  { "reason": "Still rude" }
+}
+
+assert {
+  res.status: eq 409
+  res.body.code: eq comment.already_reported
+}
+
+docs {
+  An author reports a comment once.
+}

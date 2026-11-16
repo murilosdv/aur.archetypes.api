@@ -1,0 +1,19 @@
+meta {
+  name: A reader cannot delete a comment
+  type: http
+  seq: 7
+}
+
+delete {
+  url: {{host}}/v1/posts/{{commentsPostId}}/comments/{{commentId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{alice}}
+}
+
+assert {
+  res.status: eq 403
+}

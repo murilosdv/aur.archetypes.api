@@ -1,0 +1,22 @@
+<Solution>
+  <Folder Name="/0. Root/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="docker-compose.yaml" />
+    <File Path="Dockerfile" />
+    <File Path="Dockerfile.dockerignore" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/1. Tests/">
+    <Project Path="tests/Tests.Integration/Tests.Integration.csproj" Id="876ca788-395f-4508-a998-490b5e361852" />
+    <Project Path="tests/Tests/Tests.csproj" Id="d325e9b2-b944-4253-a6b5-323ecb293c7b" />
+  </Folder>
+  <Folder Name="/T. Tools/">
+    <Project Path="tools/Tools.Migrations/Tools.Migrations.csproj" />
+  </Folder>
+  <Project Path="src/App.Api/App.Api.csproj" Id="a7b5cad0-01ec-4a23-b1a4-84c7e0bcc8c6" />
+  <Project Path="src/Core/Core.csproj" Id="f3786771-ea0e-4efa-85ca-ddfe0dfa244e" />
+  <Project Path="src/Features/Features.csproj" Id="3e7c308f-43d2-407a-85f9-6d901defe247" />
+  <Project Path="src/Infra/Infra.csproj" Id="4ac5f27d-70d5-49bf-bf7a-a51a631750c2" />
+</Solution>

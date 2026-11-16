@@ -1,0 +1,23 @@
+meta {
+  name: Alice cannot see the draft
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{host}}/v1/posts/{{slug}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{alice}}
+}
+
+assert {
+  res.status: eq 404
+}
+
+docs {
+  A draft is a 404 for anyone but its author and admins.
+}

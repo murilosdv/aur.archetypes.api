@@ -1,0 +1,29 @@
+meta {
+  name: Login alice
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{keycloak}}
+  body: formUrlEncoded
+  auth: none
+}
+
+body:form-urlencoded {
+  client_id: caller-alice
+  client_secret: local-dev-secret
+  grant_type: client_credentials
+}
+
+script:post-response {
+  bru.setVar("alice", res.body.access_token);
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  A token for alice, a reader. Kept in the variable alice.
+}

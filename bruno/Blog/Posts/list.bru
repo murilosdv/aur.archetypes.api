@@ -1,0 +1,23 @@
+meta {
+  name: A numbered page
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{host}}/v1/posts?pageSize=5
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{alice}}
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Try ?title=hello, ?orderBy=title, ?pageSize=1&pageNumber=2, ?status=Draft.
+}

@@ -1,0 +1,29 @@
+meta {
+  name: Login bob
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{keycloak}}
+  body: formUrlEncoded
+  auth: none
+}
+
+body:form-urlencoded {
+  client_id: caller-bob
+  client_secret: local-dev-secret
+  grant_type: client_credentials
+}
+
+script:post-response {
+  bru.setVar("bob", res.body.access_token);
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  A token for bob, an editor and admin. Machines ask for a token with the client credentials grant; it is kept in the variable bob for the other requests.
+}

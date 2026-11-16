@@ -1,0 +1,60 @@
+name: aur-projects
+
+services:
+  aur-archetypes-api:
+    build:
+      context: .
+      args:
+        NUGET_USER: ${NUGET_USER}
+      secrets:
+        - nuget_token
+    image: aur/archetypes-api:local
+    container_name: aur-archetypes-api
+    restart: unless-stopped
+    stop_grace_period: 15s
+    ports:
+      - "5000:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      Postgres__Host: sbx-postgres
+      Email__Host: sbx-mailpit
+      IdentityProvider__AuthorityUrl: http://sbx-keycloak:8080/realms/aurorelabs
+      HttpDependencies__Orders__ClientCredentials__TokenUrl: http://sbx-keycloak:8080/realms/aurorelabs/protocol/openid-connect/token
+    healthcheck:
+      test: ["CMD", "bash", "-c", "exec 3<>/dev/tcp/localhost/8080 && printf 'GET /health/live HTTP/1.1\\r\\nHost: localhost\\r\\nConnection: close\\r\\n\\r\\n' >&3 && grep -q '200 OK' <&3"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 20s
+    networks:
+      - archetypes
+      - dev-sbx
+
+  tests:
+    profiles: [tests]
+    build:
+      context: .
+      args:
+        NUGET_USER: ${NUGET_USER}
+      secrets:
+        - nuget_token
+      target: test
+    image: aur/archetypes-api:tests
+    environment:
+      TEST_POSTGRES_HOST: sbx-postgres
+      TEST_KEYCLOAK_AUTHORITY: http://sbx-keycloak:8080/realms/aurorelabs
+      IdentityProvider__AuthorityUrl: http://sbx-keycloak:8080/realms/aurorelabs
+    volumes:
+      - ./artifacts:/src/artifacts
+    networks:
+      - dev-sbx
+
+secrets:
+  nuget_token:
+    environment: NUGET_TOKEN
+
+networks:
+  archetypes: {}
+  dev-sbx:
+    external: true
+    name: dev-sbx

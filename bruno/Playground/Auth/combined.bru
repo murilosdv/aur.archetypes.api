@@ -1,0 +1,19 @@
+meta {
+  name: Scope api.write and role admin
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{host}}/v1/playground/auth/combined
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{bob}}
+}
+
+assert {
+  res.status: eq 200
+}
