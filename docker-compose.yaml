@@ -10,7 +10,7 @@ services:
         - nuget_token
     image: aur/archetypes-api:local
     container_name: aur-archetypes-api
-    restart: unless-stopped
+    restart: no
     stop_grace_period: 15s
     ports:
       - "5000:8080"
