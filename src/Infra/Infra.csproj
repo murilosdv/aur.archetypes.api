@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <AssemblyName>Aurore.Archetypes.Api.Infra</AssemblyName>
@@ -10,8 +10,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aurore.Foundation.AspNetCore" Version="1.0.0-preview.1" />
-    <PackageReference Include="Aurore.Foundation.EntityFrameworkCore.Postgres" Version="1.0.0-preview.1" />
+    <InternalsVisibleTo Include="Aurore.Archetypes.Api.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aurore.Foundation.AspNetCore" />
+    <PackageReference Include="Aurore.Foundation.EntityFrameworkCore.Postgres" />
   </ItemGroup>
 
   <ItemGroup>

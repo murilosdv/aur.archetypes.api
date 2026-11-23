@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+  <ProjectName>App.Api</ProjectName>
+  <ProjectLanguage>C#</ProjectLanguage>
+  <ProjectType>Product</ProjectType>
+  <ProjectGuid>a7b5cad0-01ec-4a23-b1a4-84c7e0bcc8c6</ProjectGuid>
+  <FullPath>D:\git\aur.archetypes.api\src\App.Api\App.Api.csproj</FullPath>
+  <IsExcluded>false</IsExcluded>
+  <AnalysisResultFiles>
+    <AnalysisResultFile Id="FilesToAnalyze" Location="D:\git\aur.archetypes.api\.sonarqube\conf\10\FilesToAnalyze.txt" />
+  </AnalysisResultFiles>
+  <AnalysisSettings>
+    <Property Name="sonar.cs.roslyn.reportFilePaths">D:\git\aur.archetypes.api\.sonarqube\out\10\Issues.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPaths">D:\git\aur.archetypes.api\.sonarqube\out\10</Property>
+    <Property Name="sonar.cs.scanner.telemetry">D:\git\aur.archetypes.api\.sonarqube\out\10\Telemetry.json</Property>
+  </AnalysisSettings>
+  <Configuration>Debug</Configuration>
+  <Platform>AnyCPU</Platform>
+  <TargetFramework>net11.0</TargetFramework>
+</ProjectInfo>

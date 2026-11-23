@@ -1,0 +1,6 @@
+﻿D:\git\aur.archetypes.api\tools\Tools.Migrations\History\20261116043144_InitialDb.cs
+D:\git\aur.archetypes.api\tools\Tools.Migrations\History\20261116043144_InitialDb.Designer.cs
+D:\git\aur.archetypes.api\tools\Tools.Migrations\History\AppDbContextModelSnapshot.cs
+D:\git\aur.archetypes.api\tools\Tools.Migrations\MigrationContext.cs
+D:\git\aur.archetypes.api\tools\Tools.Migrations\Program.cs
+D:\git\aur.archetypes.api\tools\Tools.Migrations\History\.editorconfig

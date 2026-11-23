@@ -13,7 +13,6 @@ This repository is meant to be copied. Do it in this order; build and run the te
 | Root namespace | `Aurore.Archetypes.Api.*` in every project (`RootNamespace` and `InternalsVisibleTo` in the csprojs, the test projects' namespaces) |
 | The service identity | `AppInformation` in `appsettings.json` (`Domain`, `Boundary`, `Component`, `Description`, `Maintainer`) and the staging and production files. These names go to telemetry, the OpenAPI title and the liveness answer. |
 | Image, container and compose service names | `docker-compose.yaml` (`aur-archetypes-api`, `aur/archetypes-api`), `Dockerfile` |
-| Image build credentials | `.env` (copy `.env.example`): `NUGET_USER` and `NUGET_TOKEN` to restore the foundation packages |
 | Database name | `Postgres:Database` in the three appsettings files, `Makefile` `CONNECTION`, [database](./database.md) |
 | Company and authors | `Directory.Build.props`, `LICENSE`, `NOTICE.md` |
 | Version | `<Version>` in `App.Api.csproj` (or `-p:Version=` in CI) |

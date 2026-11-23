@@ -1,0 +1,1 @@
+AR4D:\git\aur.archetypes.api\src\App.Api\App.Api.csprojòCSharp15

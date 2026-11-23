@@ -6,6 +6,8 @@ Examples of the platform, one resource per topic: authentication, caching, depen
 They live under `/v1/playground/{topic}`, are requested from the `Playground` folder of the [Bruno collection](../../bruno/README.md) and have nothing to do with the business (the blog).
 This page lists everything that exists for them, so the project can be cleaned of them quickly.
 
+The Playground is not counted in the coverage of the project ([testing](../instructions/testing.md#what-is-left-out-of-coverage)); a feature you keep gets its tests.
+
 ## Delete
 
 | Where | What |
@@ -29,7 +31,7 @@ Those tests check that the application accepts real Keycloak tokens and its API 
 | `tests/Tests/Core/Settings/AppSettingsFileTests.cs` | `ProductionRefusesTheDevelopmentDefaults` expects the two `HttpDependencies:Orders` keys to fail: remove those two lines. |
 | `docs/guides/adding-a-feature.md` | The sentence about the `Playground` folder. |
 
-## Settings (`appsettings.json`)
+## Settings (`appsettings*.json`)
 
 Used only by the examples:
 

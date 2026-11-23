@@ -1,11 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
+    <!-- The service version; CI overrides it: dotnet publish -p:Version=1.4.2 -->
+    <Version>1.0.0</Version>
     <AssemblyName>Archetypes.Api</AssemblyName>
     <RootNamespace>Aurore.Archetypes.Api.App.Api</RootNamespace>
-    <!-- Service version (AppInformation.Version, telemetry, liveness). CI overrides it: dotnet publish -p:Version=1.4.2 -->
-    <Version>1.0.0</Version>
-    <!--Explicit permission used by OpenAPI source generation-->
+    <!-- Source-generated OpenAPI interceptors -->
     <InterceptorsNamespaces>$(InterceptorsNamespaces);Microsoft.AspNetCore.OpenApi.Generated</InterceptorsNamespaces>
   </PropertyGroup>
 
@@ -15,9 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aurore.Foundation.OpenApi.Scalar" Version="1.0.0-preview.1" />
+    <PackageReference Include="Aurore.Foundation.OpenApi.Scalar" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\Features\Features.csproj" />

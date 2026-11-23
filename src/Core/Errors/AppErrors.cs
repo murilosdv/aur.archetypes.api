@@ -1,7 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
 using Aurore.Foundation.Core.Errors;
 
 namespace Aurore.Archetypes.Api.Core.Errors;
 
+[ExcludeFromCodeCoverage]
 public sealed class AppErrors : StandardErrors
 {
     private AppErrors()

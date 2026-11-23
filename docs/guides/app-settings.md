@@ -2,7 +2,7 @@
 
 # Application settings
 
-`appsettings.json` is bound once at startup into `AppSettings`, validated, and passed as parameters to the `Add*`/`Use*` methods that need it.
+The settings files are bound once at startup into `AppSettings`, validated, and passed as parameters to the `Add*`/`Use*` methods that need it.
 
 ```csharp
 builder.LoadAppSettings(out var appSettings);   // bind + validate, or the app does not start
@@ -40,7 +40,8 @@ builder.LoadAppSettings(out var appSettings);   // bind + validate, or the app d
 
 ## Environments
 
-`appsettings.json` has the development defaults; `appsettings.Staging.json` and `appsettings.Production.json` override what must differ (hosts, URLs, logging, privacy; secrets come from the environment, named in the comments). The environments are DEV, STG and PRD, named Development, Staging and Production; a file for another one is `appsettings.<Environment>.json`.
+`appsettings.json` has what is the same in every environment, and leaves empty what differs: hosts, URLs, users, passwords, keys. `appsettings.Development.json` fills it for the local machine with the real dev-sbx values (a password of `postgres` is fine there). `appsettings.Staging.json` and `appsettings.Production.json` fill it for the deployed ones, and a secret is never in a file: its place holds `{{NAME}}`, the name of the setting's environment variable (`{{POSTGRES_PASSWORD}}` is `Postgres__Password`). The environments are DEV, STG and PRD, named Development, Staging and Production; a file for another one is `appsettings.<Environment>.json`.
+SonarQube's hard-coded credential rule (S2068) accepts a placeholder that names a password and does not analyse the Development file, so no exclusion is needed; a real value pasted into the base, Staging or Production file is still reported.
 In Production the app refuses to start while a development value is in effect (local URLs, plain HTTP, short API keys, localhost CORS origins).
 
 Environment variables use `__` for nesting:
@@ -55,7 +56,7 @@ Array overrides merge by index; an empty array does not clear lower layers. Neve
 ## Add a setting
 
 1. Add the property, with a default, to the options record.
-2. Add the key to `appsettings.json`.
+2. Add the key to `appsettings.json`, empty when it differs by environment, and the value to each environment file.
 3. Add a rule to the validator.
 4. Pass it as a parameter where it is used.
 5. Run the tests: `AppSettingsFileTests` loads the real file strictly.

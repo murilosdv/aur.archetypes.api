@@ -23,7 +23,7 @@ docs/     guides (how this service works), instructions (testing, conventions, c
 
 ## Run it
 
-**Prerequisites:** the .NET SDK (`global.json`), Docker, the shared **dev-sbx** running (PostgreSQL, Keycloak and Mailpit; see [testing](./docs/instructions/testing.md#services)), and the foundation packages from GitHub Packages: add the registry once (see [installing](https://github.com/murilosdv/aur.foundation/blob/main/docs/installing.md)); Docker builds read `NUGET_USER` and `NUGET_TOKEN` from `.env` (copy `.env.example`).
+**Prerequisites:** the .NET SDK (`global.json`), Docker, the shared **dev-sbx** running (`make sbx-up`: PostgreSQL, Keycloak and Mailpit; see [testing](./docs/instructions/testing.md#services)), and nothing else for the foundation packages: they come from nuget.org (see [installing](https://github.com/murilosdv/aur.foundation/blob/main/docs/installing.md)).
 
 ```
 make db-reset      # drops and recreates the database from the model (InitialDb); see the database guide

@@ -1,0 +1,1 @@
+Roslyn version: 5.12.0.0Language version: CSharp15!Concurrent execution: enabledrnFile 'D:\git\aur.archetypes.api\src\Infra\obj\Debug\net11.0\Infra.AssemblyInfo.cs' was recognized as generatedçàFile 'D:\git\aur.archetypes.api\src\Infra\obj\Debug\net11.0\.NETCoreApp,Version=v11.0.AssemblyAttributes.cs' was recognized as generated

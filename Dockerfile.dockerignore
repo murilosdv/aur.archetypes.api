@@ -9,3 +9,8 @@
 **/.tasklist
 **/node_modules
 .env
+.env.*
+!.env.example
+secrets.yml
+secrets.yaml
+secrets.json

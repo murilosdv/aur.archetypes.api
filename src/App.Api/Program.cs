@@ -58,7 +58,7 @@ try
 }
 catch (Exception ex) when (ex is not HostAbortedException)
 {
-    Console.Error.WriteLine($"Application failed to start: {ex}");
+    await Console.Error.WriteLineAsync($"Application failed to start: {ex}");
 
     return ExitCodes.ConfigurationError;
 }
@@ -67,13 +67,13 @@ try
 {
     app.Logger.LogInformation("Application is starting up...");
 
-    app.Run();
+    await app.RunAsync();
 
     return ExitCodes.Success;
 }
 catch (Exception ex) when (ex is not HostAbortedException)
 {
-    Console.Error.WriteLine($"Application stopped unexpectedly: {ex}");
+    await Console.Error.WriteLineAsync($"Application stopped unexpectedly: {ex}");
 
     return ExitCodes.RuntimeError;
 }

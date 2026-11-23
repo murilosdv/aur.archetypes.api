@@ -125,6 +125,7 @@ dotnet_diagnostic.IDE1006.severity = error  # naming rules
 dotnet_diagnostic.IDE0005.severity = error  # unused usings
 dotnet_diagnostic.IDE0161.severity = error  # file-scoped namespace
 dotnet_diagnostic.IDE0065.severity = error  # using placement
+dotnet_diagnostic.S1125.severity = none  # SonarQube: "x is false" is the style of this repository, see docs/instructions/conventions.md
 dotnet_diagnostic.IDE0022.severity = error  # expression-bodied methods
 dotnet_diagnostic.IDE0021.severity = error  # expression-bodied constructors
 dotnet_diagnostic.IDE0011.severity = error  # braces
@@ -143,8 +144,12 @@ dotnet_diagnostic.IDE0049.severity = error  # int vs Int32
 dotnet_diagnostic.IDE0003.severity = error  # no this.
 dotnet_diagnostic.IDE0051.severity = error  # unused private members
 dotnet_diagnostic.IDE0052.severity = error  # unread private members
+dotnet_diagnostic.IDE0072.severity = error  # populate switch expression
 
 # XML docs: not required in the application, the OpenAPI document is its documentation. The foundation packages require them (see the
 # .editorconfig of the foundation solution).
 
 dotnet_diagnostic.CS1591.severity = none
+
+[tools/Tools.Migrations/History/**.cs]
+generated_code = true

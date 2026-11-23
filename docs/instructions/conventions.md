@@ -17,6 +17,14 @@ The rule is **cohesion**: what exists only for one thing lives in that thing's f
 
 Namespaces follow the folders (`...Resources.Posts.Endpoints`, `...Features.Posts.Shared`).
 
+## Project files, Makefiles and Dockerfiles
+
+The same order everywhere, top-down, so any file of these kinds reads like the others.
+
+- **Project file (`.csproj`):** one `PropertyGroup` (`Version` when the project has one, `AssemblyName`, `RootNamespace`, then the rest), then one `ItemGroup` each for `FrameworkReference`, `InternalsVisibleTo`, `PackageReference`, `ProjectReference`, files (`Content`) and `Using`. Items inside a group are in alphabetical order. A comment only where the reason is not obvious.
+- **Makefile:** `-include` first, `export` next, then the variables grouped under a one-line comment (project, dev-sbx, SonarQube, migrations), then `.PHONY`, then the targets in sections headed `## Section ##` (dev-sbx, SonarQube, tests, clean, migrations, database). A command that repeats is a variable.
+- **Dockerfile:** `syntax` line and `ARG` first, then the stages in order, each headed `## Stage: what it does ##` (restore, build, test, publish, runtime). The test stage does not run as root.
+
 ## Names
 
 - A feature's input ends in `Request` and its output in `Response`: `CreatePostRequest`, `PostResponse`. Items of a page are `PostSummaryResponse`, never `PostItem`. The request an endpoint binds from the body is `CreatePostBody`; a filter bound from the query and wrapped with the caller is `SearchPostsFilter` inside `SearchPostsRequest`.
@@ -25,7 +33,7 @@ Namespaces follow the folders (`...Resources.Posts.Endpoints`, `...Features.Post
 
 ## Style
 
-- **Pattern matching wherever it applies:** a `switch` for an `if` / `else if` / `else` on one value, and `is` / `is not` against constants (`Count is 0`, `status is not PostStatus.Published`). Not possible against `static readonly` values or inside an EF expression tree.
+- **Pattern matching wherever it applies:** a `switch` for an `if` / `else if` / `else` on one value, and `is` / `is not` against constants (`Count is 0`, `status is not PostStatus.Published`). Not possible against `static readonly` values or inside an EF expression tree. A negative test is `is false`, never `!`: `Contains(x) is false`. SonarQube rule S1125 (unnecessary Boolean literal) would flag these, so it is off in `.editorconfig`.
 - **No braces around a body of one line** (`if`, `else`, `foreach`, `while`); braces when it spans lines. Keep the braces on every branch of an `if` / `else` chain that has a braced branch. IDE0011 only asks for missing braces, so leaving redundant ones out is on you.
 - **A declaration longer than 120 characters puts one parameter per line**, the closing parenthesis after the last one and the base list (`: Base<...>`) on its own indented line.
 - Check with `dotnet format Archetypes.Api.slnx --verify-no-changes`.
@@ -37,6 +45,10 @@ XML docs are not required here (`CS1591` is off): nothing outside this service c
 ## While the model is in development
 
 There is one migration, `InitialDb`, always recreated: `make db-reset` drops the database, removes every migration, adds `InitialDb` from the model and applies it ([database](../guides/database.md)). After a release, new changes are `make migration-add <Name>`.
+
+## NuGet versions
+
+Every dependency version is in `Directory.Packages.props` (central package management), the foundation packages included. A project writes `<PackageReference Include="Name" />` with no version; to add or update a dependency, change its `PackageVersion` there.
 
 ## The Bruno collection
 

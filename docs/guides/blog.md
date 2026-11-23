@@ -32,7 +32,7 @@ Entities are in `src/Core/Domain`, configurations in `src/Infra/Contexts/Configu
 | Delete comments and posts | no | no | yes |
 
 Roles come from the token; the scopes `api.read` and `api.write` (`AppScopes` in Core) come from the client. In the dev-sbx Keycloak (realm `aurorelabs`), as machine callers: `caller-alice` is a reader, `caller-bob` an editor and admin.
-The API key client in `appsettings.json` can only read.
+The API key client in `appsettings.Development.json` can only read.
 
 ## Endpoints (`/v1`)
 

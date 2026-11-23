@@ -4,7 +4,7 @@
 
 ## The image
 
-The `Dockerfile` builds with the SDK image and runs on the ASP.NET image as the non-root user `app`, on port 8080. The build context is this repository. The foundation packages come from GitHub Packages, so the build needs your GitHub user and a token with `read:packages`: copy `.env.example` to `.env` (ignored by git) and fill `NUGET_USER` and `NUGET_TOKEN`. The user is a build argument; the token is a build secret, used while restoring and not kept in the image. The solution file is the `SOLUTION` build argument. `Dockerfile.dockerignore` keeps the rest out of the context.
+The `Dockerfile` builds with the SDK image and runs on the ASP.NET image as the non-root user `app`, on port 8080. The build context is this repository. The foundation packages come from nuget.org, so the build needs no credentials. The solution file is the `SOLUTION` build argument. `Dockerfile.dockerignore` keeps the rest out of the context.
 
 ```
 docker compose build
@@ -12,7 +12,7 @@ docker compose build
 
 ## Settings
 
-The image has no configuration of its own: `appsettings.json` is the development one, and everything that differs is an environment variable (`__` for nesting). The ones that matter in a container:
+The image has no configuration of its own: `appsettings.json` has only what is the same everywhere, and everything that differs (the `{{NAME}}` placeholders of the Staging and Production files) is an environment variable (`__` for nesting). The ones that matter in a container:
 
 | Variable | Why |
 |---|---|

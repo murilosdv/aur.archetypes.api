@@ -11,7 +11,7 @@ How this service identifies its callers and decides what they may do. The mechan
 | A person or another service with a **Keycloak token** | `Authorization: Bearer <token>` | the token's `sub` | the token (realm roles, the client roles of audience `api`, and the `scope` claim) |
 | A **trusted client with an API key** | `X-Api-Key: <key>` | the client's name in `ApiKeys:Clients` | `ApiKeys:Clients:<name>:Roles` and `:Scopes` |
 
-Both arrive as the same thing in the code: a `ClaimsPrincipal` with roles and scopes. The key client `local-tester` in `appsettings.json` has the `reader` role and the `api.read` scope, so it can read and nothing else. In Production keys come from the environment (`ApiKeys__Clients__<name>__Key`) and must have 32 characters or more.
+Both arrive as the same thing in the code: a `ClaimsPrincipal` with roles and scopes. The key client `local-tester` in `appsettings.Development.json` has the `reader` role and the `api.read` scope, so it can read and nothing else. In Production keys come from the environment (`ApiKeys__Clients__<name>__Key`) and must have 32 characters or more.
 
 ## What is required, where
 

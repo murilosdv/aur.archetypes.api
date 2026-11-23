@@ -11,11 +11,11 @@ namespace Aurore.Archetypes.Api.Tests.Core.Settings;
 [Trait("Feature", "App settings")]
 public sealed class AppSettingsFileTests
 {
-    [Fact(DisplayName = "appsettings.json binds without unknown keys and is valid in development")]
+    [Fact(DisplayName = "appsettings.json and appsettings.Development.json bind without unknown keys and are valid in development")]
     public void DevelopmentSettingsAreValid()
     {
         // Arrange
-        var settings = Load(null);
+        var settings = Load(Environments.Development);
         var validator = new AppSettingsValidator(new TestEnvironment(Environments.Development));
 
         // Act
@@ -25,10 +25,10 @@ public sealed class AppSettingsFileTests
         Assert.True(result.IsValid, string.Join(Environment.NewLine, result.Errors.Select(x => $"{x.PropertyName}: {x.ErrorMessage}")));
     }
 
-    [Theory(DisplayName = "{0} overrides every local address of appsettings.json")]
+    [Theory(DisplayName = "{0} has no local address, so nothing of the Development settings reaches it")]
     [InlineData("Production")]
     [InlineData("Staging")]
-    public void DeployedEnvironmentsOverrideTheLocalAddresses(string environment)
+    public void DeployedEnvironmentsHaveNoLocalAddress(string environment)
     {
         // Arrange
         var settings = Load(environment);
@@ -41,11 +41,11 @@ public sealed class AppSettingsFileTests
         Assert.DoesNotContain(result.Errors, x => x.ErrorMessage.Contains("local address"));
     }
 
-    [Fact(DisplayName = "Production refuses the development API key until it is overridden")]
+    [Fact(DisplayName = "Production refuses the development API key if the Development settings ever reach it")]
     public void ProductionRefusesTheDevelopmentApiKey()
     {
         // Arrange
-        var settings = Load("Production");
+        var settings = Load(Environments.Development);
         var validator = new AppSettingsValidator(new TestEnvironment(Environments.Production));
 
         // Act

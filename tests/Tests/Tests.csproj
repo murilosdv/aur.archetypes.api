@@ -1,13 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <AssemblyName>Aurore.Archetypes.Api.Tests</AssemblyName>
     <RootNamespace>Aurore.Archetypes.Api.Tests</RootNamespace>
+    <OutputType>Exe</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit.v3.mtp-v2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,7 +20,7 @@
 
   <ItemGroup>
     <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
-    <!-- The real settings files, so the tests always check what the app actually ships. -->
+    <!-- The real settings files of the app -->
     <Content Include="..\..\src\App.Api\appsettings.json" Link="appsettings.json" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="..\..\src\App.Api\appsettings.Production.json" Link="appsettings.Production.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
@@ -24,10 +28,5 @@
   <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="xunit.v3.mtp-v2" Version="4.0.3" />
-  </ItemGroup>
-
 
 </Project>

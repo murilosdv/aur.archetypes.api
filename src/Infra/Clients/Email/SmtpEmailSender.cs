@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -11,6 +12,7 @@ namespace Aurore.Archetypes.Api.Infra.Clients.Email;
 
 internal sealed class SmtpEmailSender(EmailOptions options) : IEmailSender
 {
+    [SuppressMessage("Critical Vulnerability", "S5332:Using clear-text protocols is security-sensitive", Justification = "EnableSsl is a setting: the dev-sbx Mailpit has no encryption, production turns it on")]
     public async Task SendAsync(EmailMessage message, CancellationToken cancellationToken)
     {
         using var mail = new MailMessage
