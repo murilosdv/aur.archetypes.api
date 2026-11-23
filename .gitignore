@@ -487,3 +487,6 @@ $RECYCLE.BIN/
 
 # Local working task list
 .tasklist
+
+# SonarQube scanner output
+.sonarqube/

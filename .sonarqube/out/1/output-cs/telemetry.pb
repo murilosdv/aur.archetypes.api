@@ -1,1 +1,0 @@
-=R0D:\git\aur.archetypes.api\src\Infra\Infra.csprojòCSharp15

@@ -1,19 +1,0 @@
-5
--D:\git\aur.archetypes.api\src\Infra\IInfra.csr„
-PD:\git\aur.archetypes.api\src\Infra\Contexts\Configurations\PostConfiguration.cs 8jr	
-‚
-Ž
-YD:\git\aur.archetypes.api\src\Infra\Contexts\Configurations\CommentReportConfiguration.cs 8jr	
- ‚
-b
-<D:\git\aur.archetypes.api\src\Infra\Contexts\AppDbContext.cs 8r	‚	r
-BD:\git\aur.archetypes.api\src\Infra\Clients\GitHub\GitHubClient.cs 8r
-x‚y
-RD:\git\aur.archetypes.api\src\Infra\Contexts\Configurations\AuthorConfiguration.cs 8r	
-‚‚
-RD:\git\aur.archetypes.api\src\Infra\Clients\RandomUser\RandomUserSigningHandler.cs 8jr	‚ˆ
-SD:\git\aur.archetypes.api\src\Infra\Contexts\Configurations\CommentConfiguration.cs 8jr	
-‚ª
-GD:\git\aur.archetypes.api\src\Infra\Configuration\InfraConfiguration.cs 8j.17=r7	
-!"#$%&'(*+,/234589:;>?@ACDE‚#%&',/23489:;>?@AC|
-DD:\git\aur.archetypes.api\src\Infra\Clients\Email\SmtpEmailSender.cs 8r	 "#$x‚	 "

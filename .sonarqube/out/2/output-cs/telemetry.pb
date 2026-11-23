@@ -1,1 +1,0 @@
-CR6D:\git\aur.archetypes.api\src\Features\Features.csprojòCSharp15

@@ -1,1 +1,0 @@
-;R.D:\git\aur.archetypes.api\src\Core\Core.csprojòCSharp15

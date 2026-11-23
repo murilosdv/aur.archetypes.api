@@ -1,1 +1,0 @@
-WRJD:\git\aur.archetypes.api\tests\Tests.Integration\Tests.Integration.csprojòCSharp15

@@ -1,9 +1,0 @@
-à
-ÔD:\git\aur.archetypes.api\tools\Tools.Migrations\obj\Debug\net11.0\Microsoft.AspNetCore.App.SourceGenerators\Microsoft.AspNetCore.SourceGenerators.PublicProgramSourceGenerator\PublicTopLevelProgram.Generated.g.csutf-8n
-cD:\git\aur.archetypes.api\tools\Tools.Migrations\obj\Debug\net11.0\Tools.Migrations.AssemblyInfo.csutf-8}
-rD:\git\aur.archetypes.api\tools\Tools.Migrations\obj\Debug\net11.0\.NETCoreApp,Version=v11.0.AssemblyAttributes.csutf-8D
-;D:\git\aur.archetypes.api\tools\Tools.Migrations\Program.csutf-8M
-DD:\git\aur.archetypes.api\tools\Tools.Migrations\MigrationContext.csutf-8`
-UD:\git\aur.archetypes.api\tools\Tools.Migrations\History\AppDbContextModelSnapshot.csutf-8h
-]D:\git\aur.archetypes.api\tools\Tools.Migrations\History\20261116043144_InitialDb.Designer.csutf-8]
-TD:\git\aur.archetypes.api\tools\Tools.Migrations\History\20261116043144_InitialDb.csutf-8
