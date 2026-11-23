@@ -1,0 +1,26 @@
+info:
+  name: An admin deletes the post
+  type: http
+  seq: 10
+
+http:
+  method: DELETE
+  url: "{{host}}/v1/posts/{{postId}}"
+  auth:
+    type: bearer
+    token: "{{bob}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: Only an admin deletes a post. The row is kept and marked as deleted.

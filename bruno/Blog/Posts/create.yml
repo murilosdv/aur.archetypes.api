@@ -1,0 +1,42 @@
+info:
+  name: Bob writes a draft
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{host}}/v1/posts"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Idempotency-Key
+      value: create-{{$guid}}
+  body:
+    type: json
+    data: '{ "title": "Hello, world", "body": "The first post." }'
+  auth:
+    type: bearer
+    token: "{{bob}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        bru.setVar("postId", res.body.id);
+        bru.setVar("slug", res.body.slug);
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body.status
+      operator: eq
+      value: Draft
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: "Only title and body are sent; the API builds the slug from the title and the id. The key is new on every send; to see the replay, type a fixed Idempotency-Key and send twice: the same answer comes back."

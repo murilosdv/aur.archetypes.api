@@ -1,0 +1,35 @@
+info:
+  name: Alice comments
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{host}}/v1/posts/{{commentsPostId}}/comments"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Idempotency-Key
+      value: comment-{{$guid}}
+  body:
+    type: json
+    data: '{ "body": "Nice first post." }'
+  auth:
+    type: bearer
+    token: "{{alice}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: bru.setVar("commentId", res.body.id);
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

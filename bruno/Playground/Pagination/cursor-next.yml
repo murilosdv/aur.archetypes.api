@@ -1,0 +1,17 @@
+info:
+  name: "Cursor: next page"
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: "{{host}}/v1/playground/pagination/people/stream?pageSize=10&orderBy=name:desc&cursor={{cursor}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: The cursor of the previous request is used. A cursor with other filters returns 400 pagination.cursor_mismatch.

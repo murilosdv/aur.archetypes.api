@@ -1,0 +1,6 @@
+info:
+  name: Idempotency
+  type: folder
+  seq: 8
+
+request: {}

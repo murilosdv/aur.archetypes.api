@@ -1,0 +1,37 @@
+info:
+  name: Alice cannot report it twice
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{host}}/v1/posts/{{commentsPostId}}/comments/{{commentId}}/report"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Idempotency-Key
+      value: report-{{$guid}}
+  body:
+    type: json
+    data: '{ "reason": "Still rude" }'
+  auth:
+    type: bearer
+    token: "{{alice}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "409"
+    - expression: res.body.code
+      operator: eq
+      value: comment.already_reported
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: An author reports a comment once.

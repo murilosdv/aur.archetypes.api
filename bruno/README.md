@@ -1,6 +1,6 @@
 # Bruno collection
 
-Requests for the API, to open with [Bruno](https://www.usebruno.com) (*Open Collection*, choose this folder) or to run from a terminal with the CLI (`npx @usebruno/cli run --env Local`, from this folder).
+Requests for the API in the [OpenCollection](https://www.usebruno.com/opencollection) YAML format, to open with [Bruno](https://www.usebruno.com) (*Open Collection*, choose this folder) or to run from a terminal with the CLI (`npx @usebruno/cli run --env Local`, from this folder).
 
 Select the environment **Local**: `host` is the service as a container (`http://127.0.0.1:5000`), `keycloak` is the token endpoint of the dev-sbx Keycloak and `apiKey` the local API key of `appsettings.Development.json`. For the service run from the IDE, change `host`.
 

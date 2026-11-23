@@ -1,0 +1,8 @@
+name: Local
+variables:
+  - name: host
+    value: http://127.0.0.1:5000
+  - name: keycloak
+    value: http://127.0.0.1:8080/realms/aurorelabs/protocol/openid-connect/token
+  - name: apiKey
+    value: local-dev-api-key

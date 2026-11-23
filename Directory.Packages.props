@@ -4,11 +4,11 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="Aurore.Foundation.AspNetCore" Version="1.0.0-preview.3" />
-    <PackageVersion Include="Aurore.Foundation.Core" Version="1.0.0-preview.3" />
-    <PackageVersion Include="Aurore.Foundation.EntityFrameworkCore.Postgres" Version="1.0.0-preview.3" />
-    <PackageVersion Include="Aurore.Foundation.OpenApi.Scalar" Version="1.0.0-preview.3" />
-    <PackageVersion Include="Aurore.Foundation.Telemetry" Version="1.0.0-preview.3" />
+    <PackageVersion Include="Aurore.Foundation.AspNetCore" Version="1.0.0-preview.4" />
+    <PackageVersion Include="Aurore.Foundation.Core" Version="1.0.0-preview.4" />
+    <PackageVersion Include="Aurore.Foundation.EntityFrameworkCore.Postgres" Version="1.0.0-preview.4" />
+    <PackageVersion Include="Aurore.Foundation.OpenApi.Scalar" Version="1.0.0-preview.4" />
+    <PackageVersion Include="Aurore.Foundation.Telemetry" Version="1.0.0-preview.4" />
     <PackageVersion Include="FluentValidation" Version="12.2.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="11.0.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="11.0.0" />

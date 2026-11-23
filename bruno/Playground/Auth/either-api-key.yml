@@ -1,0 +1,26 @@
+info:
+  name: "Either: the API key"
+  type: http
+  seq: 7
+
+http:
+  method: GET
+  url: "{{host}}/v1/playground/auth/either"
+  headers:
+    - name: X-Api-Key
+      value: "{{apiKey}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: The local key from appsettings.Development.json works here; scope api.read comes from the settings of the key.

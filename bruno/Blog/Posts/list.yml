@@ -1,0 +1,26 @@
+info:
+  name: A numbered page
+  type: http
+  seq: 6
+
+http:
+  method: GET
+  url: "{{host}}/v1/posts?pageSize=5"
+  auth:
+    type: bearer
+    token: "{{alice}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: Try ?title=hello, ?orderBy=title, ?pageSize=1&pageNumber=2, ?status=Draft.

@@ -1,0 +1,24 @@
+info:
+  name: Bob sees the draft
+  type: http
+  seq: 3
+
+http:
+  method: GET
+  url: "{{host}}/v1/posts/{{slug}}"
+  auth:
+    type: bearer
+    token: "{{bob}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

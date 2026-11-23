@@ -1,0 +1,17 @@
+info:
+  name: Limited endpoint
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{host}}/v1/playground/rate-limiting/limited"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: Send it 4 times within 10 seconds; the 4th returns 429 with Retry-After.

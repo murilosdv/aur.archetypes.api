@@ -1,0 +1,30 @@
+info:
+  name: Create the profile of alice
+  type: http
+  seq: 2
+
+http:
+  method: PUT
+  url: "{{host}}/v1/authors/me"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: '{ "handle": "alice", "displayName": "Alice" }'
+  auth:
+    type: bearer
+    token: "{{alice}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

@@ -1,0 +1,32 @@
+info:
+  name: Create the profile of bob
+  type: http
+  seq: 1
+
+http:
+  method: PUT
+  url: "{{host}}/v1/authors/me"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: '{ "handle": "bob", "displayName": "Bob" }'
+  auth:
+    type: bearer
+    token: "{{bob}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: "Each author creates the own profile first. The handle never changes: letters, digits, hyphens or underscores (bob, my-name, my_name, MyName). Calling it again with the same data changes nothing."

@@ -1,0 +1,26 @@
+info:
+  name: Another key
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{host}}/v1/playground/idempotency/orders"
+  headers:
+    - name: Idempotency-Key
+      value: test-key-0002
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: A different key gives a different id.

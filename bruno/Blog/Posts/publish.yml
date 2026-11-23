@@ -1,0 +1,29 @@
+info:
+  name: Bob publishes
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{host}}/v1/posts/{{postId}}/publish"
+  auth:
+    type: bearer
+    token: "{{bob}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body.status
+      operator: eq
+      value: Published
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: Publishing a second time is a 409.

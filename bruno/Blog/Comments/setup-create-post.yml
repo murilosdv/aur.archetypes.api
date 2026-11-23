@@ -1,0 +1,35 @@
+info:
+  name: "Setup: bob writes a post"
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{host}}/v1/posts"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: '{ "title": "A post to comment on", "body": "Comments need a published post." }'
+  auth:
+    type: bearer
+    token: "{{bob}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: bru.setVar("commentsPostId", res.body.id);
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: Only comments are tested in this folder, so it makes its own post.

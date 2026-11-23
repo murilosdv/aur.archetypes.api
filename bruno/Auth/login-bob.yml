@@ -1,0 +1,35 @@
+info:
+  name: Login bob
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{keycloak}}"
+  body:
+    type: form-urlencoded
+    data:
+      - name: client_id
+        value: caller-bob
+      - name: client_secret
+        value: local-dev-secret
+      - name: grant_type
+        value: client_credentials
+
+runtime:
+  scripts:
+    - type: after-response
+      code: bru.setVar("bob", res.body.access_token);
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: A token for bob, an editor and admin. Machines ask for a token with the client credentials grant; it is kept in the variable bob for the other requests.

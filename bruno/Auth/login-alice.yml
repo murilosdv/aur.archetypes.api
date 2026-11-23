@@ -1,0 +1,35 @@
+info:
+  name: Login alice
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{keycloak}}"
+  body:
+    type: form-urlencoded
+    data:
+      - name: client_id
+        value: caller-alice
+      - name: client_secret
+        value: local-dev-secret
+      - name: grant_type
+        value: client_credentials
+
+runtime:
+  scripts:
+    - type: after-response
+      code: bru.setVar("alice", res.body.access_token);
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: A token for alice, a reader. Kept in the variable alice.

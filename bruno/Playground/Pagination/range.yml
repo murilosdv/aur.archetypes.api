@@ -1,0 +1,23 @@
+info:
+  name: Created range and name
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{host}}/v1/playground/pagination/people?createdFrom=2026-02-10T00:00:00Z&createdTo=2026-02-13T00:00:00Z&name=person"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: From is inclusive, to is exclusive.
